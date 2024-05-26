@@ -1,57 +1,17 @@
-import java.util.*;
-
 class Solution {
-    public Long solution(String numbers) {
-        StringBuilder sb = new StringBuilder();
+    public long solution(String numbers) {
+        String string_num = numbers
+            .replace("zero", "0")
+            .replace("one", "1")
+            .replace("two", "2") 
+            .replace("three", "3")
+            .replace("four", "4")
+            .replace("five", "5")
+            .replace("six", "6")
+            .replace("seven", "7")
+            .replace("eight", "8")
+            .replace("nine", "9");
 
-        for (int i = 0; i < numbers.length(); i++) {
-            char number = numbers.charAt(i);
-            switch (number) {
-                case 'z':
-                    sb.append(0);
-                    i += 3;
-                    break;
-                case 'o':
-                    sb.append(1);
-                    i += 2;
-                    break;
-                case 't':
-                    if (numbers.charAt(i + 1) == 'w') {
-                        sb.append(2);
-                        i += 2;
-                    } else {
-                        sb.append(3);
-                        i += 4;
-                    }
-                    break;
-                case 'f':
-                    if (numbers.charAt(i + 1) == 'o') {
-                        sb.append(4);
-                    } else {
-                        sb.append(5);
-                    }
-                    i += 3;
-                    break;
-                case 's':
-                    if (numbers.charAt(i + 1) == 'i') {
-                        sb.append(6);
-                        i += 2;
-                    } else {
-                        sb.append(7);
-                        i += 4;
-                    }
-                    break;
-                case 'e':
-                    sb.append(8);
-                    i += 4;
-                    break;
-                case 'n':
-                    sb.append(9);
-                    i += 3;
-                    break;
-            }
-        }
-        
-        return Long.parseLong(sb.toString());
+        return Long.parseLong(string_num);
     }
 }
