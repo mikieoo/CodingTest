@@ -4,14 +4,16 @@ class Solution {
 
         for (int i = 0; i < s.length(); i++) {
             char c = s.charAt(i);
-            int steps = 0;
-            while (steps < index) {
+            for (int j = 0; j < index; j++) {
                 c++;
                 if (c > 'z') {
                     c = 'a';
                 }
-                if (!skip.contains(String.valueOf(c))) {
-                    steps++;
+                while (skip.contains(String.valueOf(c))) {
+                    c++;
+                    if (c > 'z') {
+                        c = 'a';
+                    }
                 }
             }
             sb.append(c);
