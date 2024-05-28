@@ -5,13 +5,13 @@ class Solution {
         int answer = 0;
 
         answer += Integer.parseInt(arr[0]);
-        for(int i=1; i<arr.length; i+=2){
-            switch (arr[i]){
+        for (int i = 1; i < arr.length; i += 2) {
+            switch (arr[i]) {
                 case "+":
-                    answer += Integer.parseInt(arr[i+1]);
+                    answer += Integer.parseInt(arr[i + 1]);
                     break;
                 case "-":
-                    answer -= Integer.parseInt(arr[i+1]);
+                    answer -= Integer.parseInt(arr[i + 1]);
                     break;
             }
         }
