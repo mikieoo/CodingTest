@@ -2,13 +2,8 @@ class Solution {
     public int[] solution(int num, int total) {
         int[] answer = new int[num];
 
-        int cnt;
-        if (total == 0) {
-            cnt = -100;
-        } else {
-            cnt = -total;
-        }
-
+        int cnt = -1000;
+        
         while (cnt < total) {
             int sum = 0;
             int hh = cnt;
