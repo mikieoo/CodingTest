@@ -1,19 +1,12 @@
-import java.util.*;
-
 class Solution {
-    public ArrayList solution(int num, int total) {
-        ArrayList<Integer> list = new ArrayList<>();
+    public int[] solution(int num, int total) {
+        int[] answer = new int[num];
 
         int cnt;
         if (total == 0) {
             cnt = -100;
         } else {
             cnt = -total;
-        }
-        
-        if(num == 1) {
-            list.add(total);
-            return list;
         }
 
         while (cnt < total) {
@@ -24,16 +17,16 @@ class Solution {
                 hh++;
             }
             if (sum == total) {
-                list.add(cnt);
                 break;
             }
             cnt++;
         }
 
-        for (int i = 0; i < num - 1; i++) {
-            list.add(list.get(i) + 1);
+        for (int i = 0; i < num; i++) {
+            answer[i] = cnt;
+            cnt ++;
         }
         
-        return list;
+        return answer;
     }
 }
