@@ -1,8 +1,10 @@
-class Solution {
-    public int[] solution(int num, int total) {
-        int[] answer = new int[num];
+import java.util.*;
 
-        int cnt = -1000;
+class Solution {
+    public ArrayList solution(int num, int total) {
+        ArrayList<Integer> list = new ArrayList<>();
+
+        int cnt = -100;
         
         while (cnt < total) {
             int sum = 0;
@@ -18,10 +20,10 @@ class Solution {
         }
 
         for (int i = 0; i < num; i++) {
-            answer[i] = cnt;
-            cnt ++;
+            list.add(cnt);
+            cnt++;
         }
         
-        return answer;
+        return list;
     }
 }
