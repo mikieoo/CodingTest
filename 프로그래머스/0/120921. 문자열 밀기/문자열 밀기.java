@@ -4,7 +4,6 @@ class Solution {
             return 0;
         }
         
-
         for (int i = 0; i < B.length(); i++) {
             if (A.equals(B)) {
                 return i;
