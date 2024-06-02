@@ -24,8 +24,8 @@ class Solution {
         }
 
         int size = nums.length;
-        for (int i = 0; i < size; i++) { 
-            for (int j = i + 1; j < size; j++) { 
+        for (int i = 0; i < size - 2; i++) { 
+            for (int j = i + 1; j < size - 1; j++) { 
                 for (int k = j + 1; k < size; k++) {
                     int prime = nums[i] + nums[j] + nums[k];
                     if (list.contains(prime)) answer++;
