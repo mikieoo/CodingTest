@@ -1,33 +1,23 @@
 class Solution {
     public String solution(String s, int n) {
-        StringBuilder sb = new StringBuilder();
+        String answer = "";
 
-        char[] arr = s.toCharArray();
-
-        for (int i = 0; i < arr.length; i++) {
-            int cnt = 0;
-            while (cnt < n) {
-                if (Character.isLowerCase(arr[i])) {
-                    if (arr[i] == 'z') {
-                        arr[i] = 'a';
-                        arr[i]--;
-                    }
-                    arr[i]++;
-                } else if (Character.isUpperCase(arr[i])) {
-                    if (arr[i] == 'Z') {
-                        arr[i] = 'A';
-                        arr[i]--;
-                    }
-                    arr[i]++;
-                } else {
-                    arr[i] = ' ';
-                    break;
+        for(int i=0; i<s.length(); i++) {
+            char c = s.charAt(i);
+            if(c >= 'a' && c <= 'z') {
+                c += n;
+                if(c > 'z') {
+                    c -= 26;
                 }
-                cnt++;
+            } else if(c >= 'A' && c <= 'Z') {
+                c += n;
+                if(c > 'Z') {
+                    c -= 26;
+                }
             }
-            sb.append(arr[i]);
+            answer += c;
         }
-        
-        return sb.toString();
+
+        return answer;
     }
 }
