@@ -4,19 +4,16 @@ class Solution {
         int min = Math.min(n, m);
 
         int divisor = 1;
-        int multiple;
 
-        int m1 = max;
-        int m2 = min;
         for (int i = min; i >= 2; i--) {
-            while (m1 % i == 0 && m2 % i == 0) {
+            while (n % i == 0 && m % i == 0) {
                 divisor *= i;
-                m1 /= i;
-                m2 /= i;
+                n /= i;
+                m /= i;
             }
         }
         
-        multiple = divisor * (max / divisor) * (min / divisor);
+        int multiple = divisor * (max / divisor) * (min / divisor);
         
         int[] answer = new int[2];
         
