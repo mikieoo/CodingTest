@@ -1,27 +1,21 @@
-import java.util.*;
-
 class Solution {
     public int[] solution(int[] lottos, int[] win_nums) {
-        Arrays.sort(lottos);
-        Arrays.sort(win_nums);
-
         int cnt = 0;
         for (int lotto : lottos) {
             if (lotto == 0) cnt++;
         }
 
-        int index = cnt;
         int same = 0;
-        for (int winNum : win_nums) {
-            for (int j = index; j < lottos.length; j++) {
-                if (winNum == lottos[j]) {
-                    index++;
+        for (int lotto : lottos) {
+            for (int win_num : win_nums) {
+                if (lotto == win_num) {
                     same++;
+                    break;
                 }
             }
         }
 
-        int[] arr = new int[]{same + cnt, same};
+        int[] arr = {same + cnt, same};
 
         int[] answer = new int[2];
 
