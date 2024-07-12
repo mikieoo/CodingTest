@@ -1,26 +1,26 @@
 class Solution {
     public int solution(String[] babbling) {
-        String[] arr = {"aya", "ye", "woo", "ma" };
+        String[] arr = {"aya", "ye", "woo", "ma"};
 
-        int answer = 0;
         for (int i = 0; i < babbling.length; i++) {
-            String word = babbling[i];
-            boolean valid = true;
-            while (!word.isEmpty()) {
-                boolean found = false;
-                for (String s : arr) {
-                    if (word.startsWith(s)) {
-                        word = word.substring(s.length());
-                        found = true;
-                        break;
-                    }
-                }
-                if (!found) {
-                    valid = false;
-                    break;
+            for (int j = 0; j < arr.length; j++) {
+                if (babbling[i].contains(arr[j])) {
+                    babbling[i] = babbling[i].replace(arr[j], "*");
                 }
             }
-            if (valid) {
+        }
+
+        int answer = 0;
+
+        for (String s : babbling) {
+            int cnt = 0;
+            for (int j = 0; j < s.length(); j++) {
+                if (s.charAt(j) == '*') {
+                    cnt++;
+                }
+            }
+
+            if (cnt == s.length()) {
                 answer++;
             }
         }
