@@ -1,29 +1,19 @@
-import java.util.*;
-
 class Solution {
-    public ArrayList solution(int num, int total) {
-        ArrayList<Integer> list = new ArrayList<>();
-
-        int cnt = -100;
+    public int[] solution(int num, int total) {
         
-        while (cnt < total) {
+        int[] arr = new int[num];
+
+        for (int start = -num; start <= total; start++) {
             int sum = 0;
-            int hh = cnt;
             for (int i = 0; i < num; i++) {
-                sum += hh;
-                hh++;
+                arr[i] = start + i;
+                sum += arr[i];
             }
             if (sum == total) {
                 break;
             }
-            cnt++;
-        }
-
-        for (int i = 0; i < num; i++) {
-            list.add(cnt);
-            cnt++;
         }
         
-        return list;
+        return arr;
     }
 }
