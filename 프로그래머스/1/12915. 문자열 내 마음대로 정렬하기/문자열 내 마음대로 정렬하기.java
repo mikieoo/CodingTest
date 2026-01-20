@@ -1,29 +1,21 @@
-import java.util.*;
-
 class Solution {
-    public ArrayList solution(String[] strings, int n) {
-        ArrayList<Character> list = new ArrayList<>();
-        ArrayList<String> answer = new ArrayList<>();
-
-        for (String str : strings) {
-            list.add(str.charAt(n));
-        }
-
-        Arrays.sort(strings);
-        Collections.sort(list);
-
-        boolean[] used = new boolean[strings.length];
-
-        for (int i = 0; i < list.size(); i++) {
-            for (int j = 0; j < strings.length; j++) {
-                if (!used[j] && list.get(i) == strings[j].charAt(n)) {
-                    answer.add(strings[j]);
-                    used[j] = true;
-                    break;
+    public String[] solution(String[] strings, int n) {
+        for (int i = 0; i < strings.length - 1; i++) {
+            for (int j = i + 1; j < strings.length; j++) {
+                if (strings[i].charAt(n) > strings[j].charAt(n)) {
+                    String tmp = strings[i];
+                    strings[i] = strings[j];
+                    strings[j] = tmp;
+                } else if (strings[i].charAt(n) == strings[j].charAt(n)) {
+                    if (strings[i].compareTo(strings[j]) > 0) {
+                        String tmp = strings[i];
+                        strings[i] = strings[j];
+                        strings[j] = tmp;
+                    }
                 }
             }
         }
-        
-        return answer;
+
+        return strings;
     }
 }
