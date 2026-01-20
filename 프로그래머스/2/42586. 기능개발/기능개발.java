@@ -6,7 +6,7 @@ class Solution {
         Queue<Integer> queue = new LinkedList<>();
 
         for (int i = 0; i < progresses.length; i++) {
-            int remain = (100 - progresses[i] + speeds[i] - 1) / speeds[i];
+            int remain = (int) Math.ceil((100.0 - progresses[i]) / speeds[i]);
             queue.offer(remain);
         }
 
