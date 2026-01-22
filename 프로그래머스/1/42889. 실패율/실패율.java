@@ -1,38 +1,39 @@
 import java.util.*;
 
 class Solution {
-    public Integer[] solution(int N, int[] stages) {
-        int[] userCount = new int[N+2];
-        double[] failureRate = new double[N+1];
+    public int[] solution(int n, int[] stages) {
 
-        for (int stage : stages) {
-            userCount[stage]++;
+        HashMap<Integer, Integer> failCnt = new HashMap<>();
+        HashMap<Integer, Double> failRate = new HashMap<>();
+
+        for (int i = 0; i < stages.length; i++) {
+            int stage = stages[i];
+            failCnt.put(stage, failCnt.getOrDefault(stage, 0) + 1);
         }
 
-        int totalUsers = stages.length;
+        int players = stages.length;
 
-        for (int i = 1; i <= N; i++) {
-            if (totalUsers == 0) {
-                failureRate[i] = 0.0;
-            } else {
-                failureRate[i] = (double) userCount[i] / totalUsers;
-                totalUsers -= userCount[i];
-            }
+        for (int stage = 1; stage <= n; stage++) {
+            int fail = failCnt.getOrDefault(stage, 0);
+            double rate = players == 0 ? 0 : (double) fail / players;
+            failRate.put(stage, rate);
+            players -= fail;
         }
 
-        Integer[] sortedStages = new Integer[N];
-        for (int i = 0; i < N; i++) {
-            sortedStages[i] = i + 1;
+        for (Map.Entry<Integer, Double> entry : failRate.entrySet()) {
+            System.out.println(entry.getKey() + " : " + entry.getValue());
         }
 
-        Arrays.sort(sortedStages, (a, b) -> {
-            if (failureRate[a] == failureRate[b]) {
-                return a - b;
-            } else {
-                return Double.compare(failureRate[b], failureRate[a]);
-            }
-        });
-        
-        return sortedStages;
+        List<Integer> keySet = new ArrayList<>(failRate.keySet());
+
+        keySet.sort(((o1, o2) -> failRate.get(o2).compareTo(failRate.get(o1))));
+
+        int[] answer = new int[n];
+        int idx = 0;
+        for (int a : keySet) {
+            answer[idx++] = a;
+        }
+
+        return answer;
     }
 }
